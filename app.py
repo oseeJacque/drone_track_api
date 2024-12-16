@@ -129,8 +129,9 @@ def upload_video():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
-if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1', port=5000)
-
+if __name__ == "__main__":
+    # Utilisez la variable d'environnement PORT fournie par Render, sinon, utilisez un port par défaut (par exemple 5000).
+    port = int(os.getenv("PORT", 5000)) 
+    app.run(host="0.0.0.0", port=port)  # Assurez-vous que l'application écoute sur le port approprié. 
+    
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
